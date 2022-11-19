@@ -10,7 +10,7 @@ redirect_from:
 {% include base_path %}
 Education
 ======
-* B.S. in Tsinghua University, 2020
+* B.E. in Tsinghua University, 2020
 * Ph.D in Computer Science, Tsinghua University
 
 Publications
