@@ -1,0 +1,6 @@
+@article{ji2023seizing,
+  title={Seizing Serendipity: Exploiting the Value of Past Success in Off-Policy Actor-Critic},
+  author={Ji, Tianying and Luo, Yu and Sun, Fuchun and Zhan, Xianyuan and Zhang, Jianwei and Xu, Huazhe},
+  journal={arXiv preprint arXiv:2306.02865},
+  year={2023}
+}
