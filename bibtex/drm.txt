@@ -1,0 +1,6 @@
+@article{xu2023drm,
+  title={DrM: Mastering Visual Reinforcement Learning through Dormant Ratio Minimization},
+  author={Xu, Guowei and Zheng, Ruijie and Liang, Yongyuan and Wang, Xiyao and Yuan, Zhecheng and Ji, Tianying and Luo, Yu and Liu, Xiaoyu and Yuan, Jiaxin and Hua, Pu and others},
+  journal={arXiv preprint arXiv:2310.19668},
+  year={2023}
+}

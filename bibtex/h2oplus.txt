@@ -1,0 +1,6 @@
+@article{niu2023h2o+,
+  title={H2O+: An Improved Framework for Hybrid Offline-and-Online RL with Dynamics Gaps},
+  author={Niu, Haoyi and Ji, Tianying and Liu, Bingqi and Zhao, Haocheng and Zhu, Xiangyu and Zheng, Jianying and Huang, Pengfei and Zhou, Guyue and Hu, Jianming and Zhan, Xianyuan},
+  journal={arXiv preprint arXiv:2309.12716},
+  year={2023}
+}
