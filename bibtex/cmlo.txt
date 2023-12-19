@@ -1,0 +1,8 @@
+@article{ji2022update,
+  title={When to Update Your Model: Constrained Model-based Reinforcement Learning},
+  author={Ji, Tianying and Luo, Yu and Sun, Fuchun and Jing, Mingxuan and He, Fengxiang and Huang, Wenbing},
+  journal={Advances in Neural Information Processing Systems},
+  volume={35},
+  pages={23150--23163},
+  year={2022}
+}
