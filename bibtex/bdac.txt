@@ -1,0 +1,8 @@
+@inproceedings{miao2019bdac,
+  title={BDAC: A Behavior-aware Dynamic Adaptive Configuration on DHCP in Wireless LANs},
+  author={Miao, Congcong and Wang, Jilong and Ji, Tianying and Wang, Hui and Xu, Chao and Li, Fenghua and Ren, Fengyuan},
+  booktitle={2019 IEEE 27th International Conference on Network Protocols (ICNP)},
+  pages={1--11},
+  year={2019},
+  organization={IEEE}
+}

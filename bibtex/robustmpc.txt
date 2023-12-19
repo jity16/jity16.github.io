@@ -1,0 +1,6 @@
+@article{luo2021robust,
+  title={A Robust Tube-Based Smooth-MPC for Robot Manipulator Planning},
+  author={Luo, Yu and Jing, Mingxuan and Ji, Tianying and Sun, Fuchun and Liu, Huaping},
+  journal={arXiv preprint arXiv:2103.09693},
+  year={2021}
+}
