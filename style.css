@@ -1,6 +1,6 @@
 html {-webkit-text-size-adjust: 100%; -moz-text-size-adjust: 100%; -ms-text-size-adjust: 100%;}
-body {background-color: #fdfdfd; color: #2c3c4c; margin: 0; font-size: 18px;}
-h1 {margin-bottom: 36px; font-size: 2.6em;}
+body {background-color: #fdfdfd; color: #2c3c4c; margin: 0; font-size: 15px;}
+h1 {margin-bottom: 34px; font-size: 2.6em;}
 h2 {margin-top: 48px;}
 h1, h2 {color: #234;}
 h3, h4, h5 {color: #345;}
@@ -19,7 +19,7 @@ h1, h2, h3, h4, h5, a, p, span, body, div {font-weight: normal; font-family: 'La
     background-position: center; 
     background-size: 85% auto; 
 }
-.content {max-width: 1050px; padding-left: 0px; padding-right: 0px; margin: auto; margin-top: 48px;}
+.content {max-width: 950px; padding-left: 0px; padding-right: 0px; margin: auto; margin-top: 48px;}
 .hr {width: 100%; height: 1px; margin: 48px 0; background-color: #d6dbdf;}
 a {color: #2471a3; text-decoration: none;}
 a:focus, a:hover {color: #f09228;}
@@ -31,7 +31,7 @@ p {line-height: 1.5em;}
 .bulletpoints {line-height: 1.5em;}
 .row {box-sizing: border-box;}
 .row-media {margin-top: 0px; display: block; float: left; width: 240px; height: 160px; background-position: center; background-size: contain; background-repeat: no-repeat;}
-.row-text {display: block; float: left; margin-left: 12px; line-height: 1.5em; max-width: 750px;}
+.row-text {display: block; float: left; margin-left: 50px; line-height: 1.5em; max-width: 600px;}
 .row-text span {line-height: inherit;}
 .clearfix {content: ""; clear: both; display: table;}
 .publication {margin-bottom: 32px; padding-left: 8px;}

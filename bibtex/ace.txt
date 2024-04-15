@@ -1,0 +1,6 @@
+@article{ji2024ace,
+  title={ACE: Off-Policy Actor-Critic with Causality-Aware Entropy Regularization},
+  author={Ji, Tianying and Liang, Yongyuan and Zeng, Yan and Luo, Yu and Xu, Guowei and Guo, Jiawei and Zheng, Ruijie and Huang, Furong and Sun, Fuchun and Xu, Huazhe},
+  journal={arXiv preprint arXiv:2402.14528},
+  year={2024}
+}

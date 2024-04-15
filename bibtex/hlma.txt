@@ -1,0 +1,7 @@
+@article{luo2024goal,
+  title={Goal-Conditioned Hierarchical Reinforcement Learning With High-Level Model Approximation},
+  author={Luo, Yu and Ji, Tianying and Sun, Fuchun and Liu, Huaping and Zhang, Jianwei and Jing, Mingxuan and Huang, Wenbing},
+  journal={IEEE Transactions on Neural Networks and Learning Systems},
+  year={2024},
+  publisher={IEEE}
+}
