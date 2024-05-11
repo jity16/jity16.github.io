@@ -1,5 +1,0 @@
-@inproceedings{ji2024leveraging,
-  title={Leveraging Causal Policy-Reward Entropy for Enhanced Exploration},
-  author={Ji, Tianying and Zeng, Yan and Luo, Yu and Zhan, Xianyuan},
-  booktitle={The Second Tiny Papers Track at ICLR 2024}
-}
