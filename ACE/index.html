@@ -1,0 +1,176 @@
+<head>
+	<title>ACE</title>
+	<meta property="og:title" content="ACE">
+	<meta property="og:description" content="ACE: Off-Policy Actor-Critic with Causality-Aware Entropy Regularization">
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script type="text/javascript">
+		function toggle(id) {
+			var e = document.getElementById(id);
+			if(e.style.display == 'block')
+				e.style.display = 'none';
+			else
+				e.style.display = 'block';
+		}
+	</script>
+</head>
+<div class="header" id="top">
+	<h1><span class="bold"><span class="bold red">ACE</span>:</span><br/>Off-Policy Actor-Critic with Causality-Aware Entropy Regularization</h1>
+	<!--<h3><a href="https://openreview.net" class="bold default-color">ICML 2024 </span><br/></h3>-->
+	<table class="authors">
+		<tbody>
+			<tr>
+				<td>
+					<h4>
+						<a href="https://jity16.github.io/" class="nobreak">Tianying Ji</a>&ast;,&ensp;
+						<a href="https://cheryyunl.github.io/" class="nobreak">Yongyuan Liang</a>&ast;,&ensp;
+						<a href="" class="nobreak">Yan Zeng</a>,&ensp;
+						<a href="https://scholar.google.com/citations?user=KQjoQOMAAAAJ&hl=zh-CN" class="nobreak">Yu Luo</a>,&ensp;
+						<a href="https://xugw-kevin.github.io/" class="nobreak">Guowei Xu</a>,<br/>&ensp;
+						<a href="" class="nobreak">Jiawei Guo</a>,&ensp;
+						<a href="https://ruijiezheng.com/" class="nobreak">Ruijie Zheng</a>,&ensp;
+						<a href="https://furong-huang.com/" class="nobreak">Furong Huang</a>,&ensp;
+						<a href="https://scholar.google.com/citations?user=DbviELoAAAAJ&hl=en" class="nobreak">Fuchun Sun</a>,&ensp;
+						<a href="http://hxu.rocks/" class="nobreak">Huazhe Xu</a><br/>&ensp;
+						&ast;Equal contribution
+					</h4>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="links">
+		<a href="https://arxiv.org/abs/2402.14528" class="btn"><i class="fa">&#xf1c1;</i>&ensp;Paper</a>
+		<a href="https://github.com/jity16/ACE-Off-Policy-Actor-Critic-with-Causality-Aware-Entropy-Regularization" class="btn"><i class="fa fa-github"></i> Code</a>
+		<a href="fa fa-github" class="btn"><i class="fa fa-cogs"></i>&ensp;Twitter</a>
+	</div>
+</div>
+<div class="content">
+	<div class="hr"></div>
+	<div class="figure" style="height: 750px; background-image: url(images/0.png);"></div>
+	<div class="hr"></div>
+	<div>
+		<h2>Abstract</h2>
+		<p class="abstract">
+            The varying significance of distinct primitive behaviors during the policy learning process has been overlooked by prior model-free RL algorithms. Leveraging this insight, we explore the causal relationship between different action dimensions and rewards to evaluate the significance of various primitive behaviors during training. We introduce a causality-aware entropy term that effectively identifies and prioritizes actions with high potential impacts for efficient exploration. Furthermore, to prevent excessive focus on specific primitive behaviors, we analyze the gradient dormancy phenomenon and introduce a dormancy-guided reset mechanism to further enhance the efficacy of our method. Our proposed algorithm, <span class="bold red">ACE</span>: off-policy <span class="bold red">A</span>ctor-critic with <span class="bold red">C</span>ausality-aware <span class="bold red">E</span>ntropy regularization, demonstrates a substantial performance advantage across 29 diverse continuous control tasks spanning 7 domains compared to model-free RL baselines, which underscores the effectiveness, versatility, and efficient sample efficiency of our approach. 
+
+		</p>
+	</div>
+	<div class="hr"></div>
+	<div>
+		<h2>ACE Handles Diverse Tasks</h2>
+		<div class="figure-caption">
+			<p>
+				We evaluate ACE across 29 diverse continuous control tasks spanning 7 task domains: 
+				<a href="https://mujoco.org/">MuJoCo</a>,
+				<a href="https://meta-world.github.io">MetaWorld</a>, 
+				<a href="https://arxiv.org/abs/1801.00690">Deepmind Control Suite</a>, 
+				<a href="https://arxiv.org/abs/1709.10087">Adroit</a>,
+				<a href="https://arxiv.org/abs/1802.09464">Shadow Dexterous Hand</a>,
+				<a href="https://arxiv.org/abs/2106.13687">Panda-gym</a>,
+				and <a href="https://arxiv.org/abs/1909.11639">ROBEL</a>.
+			</p>
+			<p>
+				Here we provide visualizations of the ACE agent's behaviors on a variety tasks.
+			</p>
+		</div>
+		<div class="content-video" style="margin-bottom: 32px">
+			<div class="content-video-container">
+				<img src="video/metaworld/stick-push.gif" width="13%">
+				<img src="video/dmc/acrobot.gif" width="13%">
+				<img src="video/adroit/door.gif" width="13%">
+				<img src="video/metaworld/basketball.gif" width="13%">
+				<img src="video/dmc/ant.gif" width="13%">
+				<img src="video/metaworld/coffee-push.gif" width="13%">
+				<img src="video/dmc/cheetahrun.gif" width="13%">
+				<img src="video/adroit/panda1.gif" width="13%">
+				<img src="video/metaworld/disassemble.gif" width="13%">
+				<img src="video/metaworld/sweep-into.gif" width="13%">
+				<img src="video/dmc/halfcheetah.gif" width="13%">
+				<img src="video/metaworld/door-open.gif" width="13%">
+				<img src="video/dmc/hopper.gif" width="13%">
+				<img src="video/dmc/do.gif" width="13%">
+				<img src="video/metaworld/door-unlock.gif" width="13%">
+				<img src="video/dmc/quad.gif" width="13%">
+				<img src="video/adroit/panda2.gif" width="13%">
+				<img src="video/metaworld/drawer-open.gif" width="13%">
+				<img src="video/dmc/reacher.gif" width="13%">
+				<img src="video/metaworld/hammer.gif" width="13%">
+				<img src="video/metaworld/hand-insert.gif"width="13%">
+				<img src="video/dmc/walker2d.gif" width="13%">
+				<img src="video/metaworld/pick-place-wall.gif" width="13%">
+				<img src="video/adroit/panda3.gif" width="13%">
+				<img src="video/metaworld/plate-slide.gif" width="13%">
+				<img src="video/dmc/walkerrun.gif" width="13%">
+				<img src="video/metaworld/soccer.gif" width="13%">
+				<img src="video/metaworld/window-open.gif" width="13%">
+			</div>
+		</div>
+	</div>
+	<div class="hr"></div>
+	<div>
+		<h2>Motivating example</h2>
+		<center>
+		<video width="900" height="400" controls>
+			<source src="causal.mp4" type="video/mp4">
+		</video></center>
+		<div class="figure-caption">
+			This task involves a robotic arm hammering a screw into a wall.
+			Initially, the robotic arm approaches the desk moving on the z-axis and struggles with torque grasping, making <font color="#EA55B3">z-axis positioning</font> and <font color="#F4CE49">torque</font> exploration a priority.
+			As the training advances, the agent's focus shifts to optimizing movement, prioritizing end-effector position (<font color="#33BD3B">x-axis</font> and <font color="#4587E2">y-axis</font> improvement). 
+			Finally, potential improvements lie in the stable and swift hammering, shifting focus back to <font color="#F4CE49">torque</font> and <font color="#EA55B3">placing down</font> the object. 
+			The evolving causal weights, depicted on the left, reflect these changing priorities.
+		</div>
+	</div>
+	<div>
+	<div class="hr"></div>
+		<h2>Benchmarking</h2>
+		<div class="figure-caption">
+			<span class="bold red">Manipulation tasks.</span> We conducted experiments on
+			tabletop manipulation tasks in MetaWorld, tackling 14 tasks
+			with dense rewards, spanning 4 very hard, 7 hard, and 3
+			medium tasks, including all types of tasks and all levels of
+			task difficulties.
+		</div>
+		<div class="figure" style="height: 580px; background-image: url(images/metaworld_12figures.png);"></div>
+		<div class="figure-caption">
+			<span class="bold red">Locomotion tasks.</span> We conducted experiments on four MuJoCo tasks
+			and five DeepMind Control Suite tasks, encompassing diverse embodiments.
+		</div>	
+		<div class="figure" style="height: 200px; background-image: url(images/mujoco.png);"></div>
+		<div class="figure" style="height: 250px; background-image: url(images/dmc.png);"></div>
+		<div class="figure-caption">
+			<span class="bold red">Dexterous hand manipulation tasks.</span> We compare ACE with baselines on 
+			three dexterous hand manipulation tasks, including
+			Adroit  and Shadow Dexterous Hand suites.
+		</div>
+		<div class="figure" style="height: 250px; background-image: url(images/dexterous_hand.png);"></div>
+		<div class="figure-caption">
+			<span class="bold red">Sparse reward tasks.</span> We evaluate our approach
+			against baselines on tasks with sparse rewards.
+			These tasks pose significant challenges for online RL exploration, covering 
+			both complex robot locomotion (Pandagym and ROBEL) and manipulation (MetaWorld).
+		</div>
+		<div class="figure" style="height: 500px; background-image: url(images/sparse.png);"></div>
+	</div>
+<div class="hr"></div>
+<div style="padding-bottom: 64px; text-align: center;">
+	<h2>Citation</h2>
+	<div id="bibtex-text" class="bibtexsection" onClick="window.getSelection().selectAllChildren(document.getElementById('bibtex-text'));">
+@article{ji2024ace,
+	title={ACE: Off-Policy Actor-Critic with Causality-Aware Entropy Regularization},
+	author={Ji, Tianying and Liang, Yongyuan and Zeng, Yan and Luo, Yu and Xu, Guowei and Guo, 
+	Jiawei and Zheng, Ruijie and Huang, Furong and Sun, Fuchun and Xu, Huazhe},
+	journal={arXiv preprint arXiv:2402.14528},
+	year={2024}
+}
+</div>
+</div>
+</div>
+<footer>
+<a href="#top"><i class="fa fa-arrow-up"></i><br/>Return to top</a>
+<div style="padding-top: 48px;">
+<span>Website based on <a href="https://nicklashansen.github.io/td-mpc">TD-MPC</a>.</span>
+</div>
+</footer>
+

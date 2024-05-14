@@ -1,0 +1,420 @@
+
+<head>
+	<title>BEE</title>
+	<meta property="og:title" content="Title">
+	<meta property="og:description" content="Test">
+	<link rel="stylesheet" href="style.css?1">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+	</script>
+	<script type="text/javascript" async
+  		src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+	</script>
+	<script type="text/javascript">
+		function toggle(id) {
+			var e = document.getElementById(id);
+			if(e.style.display == 'block')
+				e.style.display = 'none';
+			else
+				e.style.display = 'block';
+		}
+	</script>
+</head>
+<div class="header" id="top">
+	<h1>
+		<img src="Figures/beeicon.png" alt="Icon" width="55" height="55">
+		Seizing Serendipity: <br>
+		Exploiting the Value of Past Success in Off-Policy Actor-Critic
+	</h1>
+	<table class="authors">
+		<tbody>
+			<tr>
+				<td>
+					<h4>
+						<span class="authors-affiliation">
+							<a href="https://jity16.github.io/" class="nobreak" style="font-size: 1.05em;">Tianying Ji</a><sup>1</sup>, &ensp;
+							<a href="https://scholar.google.com/citations?user=KQjoQOMAAAAJ&hl=zh-CN" class="nobreak" style="font-size: 1.05em;">Yu Luo</a><sup>1</sup>, &ensp;
+							<a href="https://scholar.google.com/citations?user=DbviELoAAAAJ&hl=en" class="nobreak" style="font-size: 1.05em;">Fuchun Sun</a><sup>1</sup>, &ensp;
+							<a href="http://zhanxianyuan.xyz/" class="nobreak" style="font-size: 1.05em;">Xianyuan Zhan</a><sup>1</sup>&ensp;, <br>
+							<a href="https://tams.informatik.uni-hamburg.de/people/zhang/" class="nobreak" style="font-size: 1.05em;">Jianwei Zhang</a><sup>2</sup>, &ensp;
+							<a href="http://hxu.rocks/" class="nobreak" style="font-size: 1.05em;">Huazhe Xu</a><sup>1</sup></span>&ensp;
+						<br>
+						<span class="authors-affiliation" style="font-size: 0.95em"><sup>1</sup>Tsinghua University, <sup>2</sup>University of Hamburg</span>
+					</h4>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<div class="links">
+		<a href="https://arxiv.org/abs/2306.02865" class="btn"><i class="fa"></i> Paper</a> 
+		<a href="https://github.com/jity16/Seizing-Serendipity-Exploiting-the-Value-of-Past-Success-in-Off-Policy-Actor-Critic" class="btn"><i class="fa fa-github"></i> Code</a> 
+		<a href="https://twitter.com/jtinyng1/status/1668147432813903872" class="btn"><i class="fa fa-cogs"></i>&ensp;Twitter</a>
+</div>
+
+<div class="content">
+	<div>
+		<h2>Abstract</h2>
+		<p class="abstract">
+			Learning high-quality $Q$-value functions plays a key role in the success of many modern off-policy deep reinforcement learning (RL) algorithms. 
+			Previous works primarily focus on addressing the value overestimation issue, an outcome of adopting function approximators and off-policy learning. 
+			Deviating from the common viewpoint, we observe that $Q$-values are often underestimated in the latter stage of the RL training process, potentially hindering policy learning and reducing sample efficiency. We find that such a long-neglected phenomenon is often related to the use of inferior actions from the current policy in Bellman updates as compared to the more optimal action samples in the replay buffer.
+			To address this issue, our insight is to incorporate sufficient exploitation of past successes while maintaining exploration optimism.
+			We propose the Blended Exploitation and Exploration (BEE) operator, a simple yet effective approach that updates $Q$-value using both historical best-performing actions and the current policy.
+			Based on BEE, the resulting practical algorithm BAC outperforms state-of-the-art methods in <b>over 50</b> continuous control tasks and achieves strong performance in failure-prone scenarios and <b>real-world robot</b> tasks.
+		</p>
+	</div>
+	<div class="hr"></div>
+	<div>
+		<h2>Real-World Validation</h2>
+		<div class="figure-caption">
+			<p>
+				Real-world validation of BAC using a cost-effective D'Kitty robot: tasked with traversing complex terrains and reaching goal points. BAC outperforms both TD3 and SAC, mastering <span style="color: #ff0000">a stable, natural gait</span>; TD3 opts for a low stance, such as a knee walk, whereas SAC exhibits more oscillatory gait patterns.
+			</p>
+		</div>
+		<h3>Smooth Road</h3>
+		<div class="content-video" style="margin-bottom: 32px">
+			<div class="content-video-container">
+				<div class="content-video-frame medium" style="padding: 1.1%">
+					<span style="color: #ff0000; font-size: 1em; padding-bottom: 17px">BAC</span>
+					<video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
+						<source src="Videos/real-world/smooth-road_BAC.mp4" type="video/mp4"/>
+					</video>
+				</div>
+				<div class="content-video-frame medium" style="padding: 1.1%">
+					<span style="font-size: 1em; padding-bottom: 17px">SAC</span>
+					<video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
+						<source src="Videos/real-world/smooth-road_SAC.mp4" type="video/mp4"/>
+					</video>
+				</div>
+				<div class="content-video-frame medium" style="padding: 1.1%">
+					<span style="font-size: 1em; padding-bottom: 17px">TD3</span>
+					<video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
+						<source src="Videos/real-world/smooth-road_TD3.mp4" type="video/mp4"/>
+					</video>
+				</div>
+			</div>
+		</div>
+		
+		<h3>Rough Stone Road</h3>
+		<div class="content-video" style="margin-bottom: 32px">
+			<div class="content-video-container">
+				<div class="content-video-frame medium" style="padding: 1.1%">
+					<span style="color: #ff0000; font-size: 1em; padding-bottom: 17px">BAC</span>
+					<video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
+						<source src="Videos/real-world/rough-stone-road_BAC.mp4" type="video/mp4"/>
+					</video>
+				</div>
+				<div class="content-video-frame medium" style="padding: 1.1%">
+					<span style="font-size: 1em; padding-bottom: 17px">SAC</span>
+					<video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
+						<source src="Videos/real-world/rough-stone-road_SAC.mp4" type="video/mp4"/>
+					</video>
+				</div>
+				<div class="content-video-frame medium" style="padding: 1.1%">
+					<span style="font-size: 1em; padding-bottom: 17px">TD3</span>
+					<video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
+						<source src="Videos/real-world/rough-stone-road_TD3.mp4" type="video/mp4"/>
+					</video>
+				</div>
+			</div>
+		</div>
+		
+		<h3>Uphill Stone Road</h3>
+		<div class="content-video" style="margin-bottom: 32px">
+			<div class="content-video-container">
+				<div class="content-video-frame medium" style="padding: 1.1%">
+					<span style="color: #ff0000; font-size: 1em; padding-bottom: 17px">BAC</span>
+					<video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
+						<source src="Videos/real-world/uphill-stone-road_BAC.mp4" type="video/mp4"/>
+					</video>
+				</div>
+				<div class="content-video-frame medium" style="padding: 1.1%">
+					<span style="font-size: 1em; padding-bottom: 17px">SAC</span>
+					<video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
+						<source src="Videos/real-world/uphill-stone-road_SAC.mp4" type="video/mp4"/>
+					</video>
+				</div>
+				<div class="content-video-frame medium" style="padding: 1.1%">
+					<span style="font-size: 1em; padding-bottom: 17px">TD3</span>
+					<video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
+						<source src="Videos/real-world/uphill-stone-road_TD3.mp4" type="video/mp4"/>
+					</video>
+				</div>
+			</div>
+		</div>
+		
+		<h3>Grassland</h3>
+		<div class="content-video" style="margin-bottom: 32px">
+			<div class="content-video-container">
+				<div class="content-video-frame medium" style="padding: 1.1%">
+					<span style="color: #ff0000; font-size: 1em; padding-bottom: 17px">BAC</span>
+					<video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
+						<source src="Videos/real-world/grassland_BAC.mp4" type="video/mp4"/>
+					</video>
+				</div>
+				<div class="content-video-frame medium" style="padding: 1.1%">
+					<span style="font-size: 1em; padding-bottom: 17px">SAC</span>
+					<video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
+						<source src="Videos/real-world/grassland_SAC.mp4" type="video/mp4"/>
+					</video>
+				</div>
+				<div class="content-video-frame medium" style="padding: 1.1%">
+					<span style="font-size: 1em; padding-bottom: 17px">TD3</span>
+					<video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
+						<source src="Videos/real-world/grassland_TD3.mp4" type="video/mp4"/>
+					</video>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="hr"></div>
+	<div>
+		<h2>DogRun</h2>
+		<div class="figure-caption">
+			<p>
+				BAC excels in the complex DogRun task with <span style="color: #ff0000">38-dimensional continuous action space</span>—a challenge that stumps other methods. This is, to the best of our knowledge, <span style="color: #ff0000">the first documented result</span> of model-free methods effectively tackling the challenging Dog task.
+			</p>
+		</div>
+		<div class="content-video" style="margin-bottom: 32px">
+			<div class="content-video-container">
+				<div class="content-video-frame medium">
+					<span style="color: #ff0000;">BAC</span></span>
+					<video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
+						<source src="Videos/dogrun/BAC.mp4" type="video/mp4"/>
+					</video>
+				</div>
+				<div class="content-video-frame medium">
+					<span>SAC</span>
+					<video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
+						<source src="Videos/dogrun/SAC.mp4" type="video/mp4"/>
+					</video>
+				</div>
+				<div class="content-video-frame medium">
+					<span>TD3</span>
+					<video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
+						<source src="Videos/dogrun/TD3.mp4" type="video/mp4"/>
+					</video>
+				</div>
+				<div class="content-video-frame medium">
+					<span>RRS</span>
+					<video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
+						<source src="Videos/dogrun/RRS.mp4" type="video/mp4"/>
+					</video>
+				</div>
+				<div class="content-video-frame medium">
+					<span>XQL</span>
+					<video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
+						<source src="Videos/dogrun/XQL.mp4" type="video/mp4"/>
+					</video>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="hr"></div>
+	<div>
+		<h2>HumanoidStandup</h2>
+		<div class="figure-caption">
+			<p>
+				In the tough HumanoidStandup task, BAC achieves <span style="color: #ff0000">2.1x evaluation scores</span> against the strongest baseline. Scores ~280,000  at 2.5M steps and ~360,000  at 5M steps. BAC stands strong, while others falter—SAC wobbles, DAC sits, and RRS rolls.
+			</p>
+		</div>
+		<div class="content-video" style="margin-bottom: 48px">
+			<div class="content-video-container">
+				<div class="content-video-frame medium" style="padding: 1.1%">
+					<span style="color: #ff0000;">BAC@5M</span></span>
+					<video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
+						<source src="Videos/humanoidstandup/BEE-5M.mp4" type="video/mp4"/>
+					</video>
+				</div>
+				<div class="content-video-frame medium" style="padding: 1.1%">
+					<span style="color: #ff0000;">BAC@2.5M</span></span>
+					<video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
+						<source src="Videos/humanoidstandup/BEE.mp4" type="video/mp4"/>
+					</video>
+				</div>
+				<div class="content-video-frame medium" style="padding: 1.1%">
+					<span>SAC@5M</span></span>
+					<video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
+						<source src="Videos/humanoidstandup/SAC.mp4" type="video/mp4"/>
+					</video>
+				</div>
+				<div class="content-video-frame medium" style="padding: 1.1%">
+					<span>RRS@5M</span></span>
+					<video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
+						<source src="Videos/humanoidstandup/RRS.mp4" type="video/mp4"/>
+					</video>
+				</div>
+				<div class="content-video-frame medium" style="padding: 1.1%">
+					<span>DAC@5M</span></span>
+					<video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
+						<source src="Videos/humanoidstandup/DAC.mp4" type="video/mp4"/>
+					</video>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="hr"></div>
+	<style>
+		table.gifs {
+			margin: auto;
+		}
+		table.gifs > tbody > tr > td {
+			padding: 0;
+			margin: 0;
+		}
+		table.gifs > tbody > tr > td > div {
+			padding: 0;
+			margin: 0px;
+			width: 100px;
+			height: 100px;
+			min-height: 0px;
+		}
+	</style>
+	<div>
+		<h2>Behavior Visualizations of BAC in a Variety of Benchmark Tasks</h2>
+		<div class="figure-caption">
+			<table class="gifs">
+				<tbody>
+					<tr>
+						<td><div class="figure" style="background-image: url(Figures/gifs/AdroitDoor.gif);"></div></td>
+						<td><div class="figure" style="background-image: url(Figures/gifs/AdroitHammer.gif);"></div></td>
+						<td><div class="figure" style="background-image: url(Figures/gifs/AdroitPen.gif);"></div></td>
+						<td><div class="figure" style="background-image: url(Figures/gifs/Ant-v2.gif);"></div></td>
+						<td><div class="figure" style="background-image: url(Figures/gifs/CheetahRun.gif);"></div></td>
+						<td><div class="figure" style="background-image: url(Figures/gifs/DogRun.gif);"></div></td>
+						<td><div class="figure" style="background-image: url(Figures/gifs/HardKitty.gif);"></div></td>
+						<td><div class="figure" style="background-image: url(Figures/gifs/HopperStand.gif);"></div></td>
+					</tr>
+					<tr>
+						<td><div class="figure" style="background-image: url(Figures/gifs/Humanoid.gif);"></div></td>
+						<td><div class="figure" style="background-image: url(Figures/gifs/LiftCube.gif);"></div></td>
+						<td><div class="figure" style="background-image: url(Figures/gifs/MediumDKitty.gif);"></div></td>
+						<td><div class="figure" style="background-image: url(Figures/gifs/PandaReachJoints.gif);"></div></td>
+						<td><div class="figure" style="background-image: url(Figures/gifs/assembly.gif);"></div></td>
+						<td><div class="figure" style="background-image: url(Figures/gifs/basketball-v2-goal-observable.gif);"></div></td>
+						<td><div class="figure" style="background-image: url(Figures/gifs/button-press.gif);"></div></td>
+						<td><div class="figure" style="background-image: url(Figures/gifs/coffee-push-v2-goal-observable.gif);"></div></td>
+					</tr>
+					<tr>
+						<td><div class="figure" style="background-image: url(Figures/gifs/dooropen.gif);"></div></td>
+						<td><div class="figure" style="background-image: url(Figures/gifs/draweropen.gif);"></div></td>
+						<td><div class="figure" style="background-image: url(Figures/gifs/hammer-v2-goal-observable.gif);"></div></td>
+						<td><div class="figure" style="background-image: url(Figures/gifs/hand-insert-v2-goal-observable.gif);"></div></td>
+						<td><div class="figure" style="background-image: url(Figures/gifs/humanoidrun392.gif);"></div></td>
+						<td><div class="figure" style="background-image: url(Figures/gifs/humanoidwalk_785.gif);"></div></td>
+						<td><div class="figure" style="background-image: url(Figures/gifs/myoHandKeyTurnRandom-v0.gif);"></div></td>
+						<td><div class="figure" style="background-image: url(Figures/gifs/myoHandPenTwirlFixed-v0.gif);"></div></td>
+					</tr>
+					<tr>
+						<td><div class="figure" style="background-image: url(Figures/gifs/myoHandPoseFixed-v0.gif);"></div></td>
+						<td><div class="figure" style="background-image: url(Figures/gifs/pickcube.gif);"></div></td>
+						<td><div class="figure" style="background-image: url(Figures/gifs/pickplace.gif);"></div></td>
+						<td><div class="figure" style="background-image: url(Figures/gifs/quadrupedwalk.gif);"></div></td>
+						<td><div class="figure" style="background-image: url(Figures/gifs/reacherhard.gif);"></div></td>
+						<td><div class="figure" style="background-image: url(Figures/gifs/stackcube.gif);"></div></td>
+						<td><div class="figure" style="background-image: url(Figures/gifs/TurnFaucet.gif);"></div></td>
+						<td><div class="figure" style="background-image: url(Figures/gifs/windowopen.gif);"></div></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="hr"></div>
+	<style>
+		span.benchmark > a {color: #ff0000; text-decoration: none;}
+		span.benchmark > a:hover {color: rgb(69, 164, 228);}
+	</style>
+	<div>
+		<h2>Benchmark Results</h2>
+		<div class="figure-caption">
+			<p>
+				We evaluate the BEE operator on <span style="color: #ff0000">over 50 diverse benchmark tasks</span> from <span class="benchmark" style="color: #ff0000"><a target="_blank" href="https://mujoco.org/">MuJoCo</a>, <a target="_blank" href="https://arxiv.org/abs/1801.00690">DMControl</a>, <a target="_blank" href="https://meta-world.github.io">Meta-World</a>, <a target="_blank" href="https://arxiv.org/abs/1709.10087">Adroit</a>, <a target="_blank" href="https://arxiv.org/abs/2205.13600">MyoSuite</a>, <a target="_blank" href="https://arxiv.org/abs/2302.04659">ManiSkill2</a>, and <a target="_blank" href="https://arxiv.org/abs/1802.09464">Shadow Dexterous Hand</a></span>. It excels in both  locomotion  and manipulation tasks. As a versatile plugin, it seamlessly enhances performance with various policy optimization methods, shining in <span style="color: #ff0000">model-based and model-free paradigms</span>.
+			</p>
+		</div>
+		<h3>BAC in MuJoCo Benchmarks</h3>
+		<div class="figure-caption">
+			<p>
+				We evaluate BAC on 4 continuous control tasks from MuJoCo. BAC outperforms all baselines in both eventual performance and sample efficiency.
+			</p>
+		</div>
+		<div class="figure-caption">
+			<div class="figure" style="height: 199px; background-image: url(Figures/main_res_mf_bac.png);"></div>
+		</div>
+		
+		<h3>MB-BAC in MuJoCo Benchmarks</h3>
+		<div class="figure-caption">
+			<p>
+				We evaluate MB-BAC on four MuJoCo continuous control tasks. MB-BAC learns faster than MBRL baselines and achieves comparable asymptotic performance with model-free methods.
+			</p>
+		</div>
+		<div class="figure-caption">
+			<div class="figure" style="height: 199px; background-image: url(Figures/main_res_mb_bac.png);"></div>
+		</div>
+		
+		<h3>BAC &amp; BEE-TD3 in DMControl Benchmark Tasks</h3>
+		<div class="figure-caption">
+			<p>
+				We benchmark BAC and its variant, BEE-TD3, on 15 continuous control tasks from DMControl. BAC successfully solves many challenging tasks like HumanoidRun, DogWalk, and DogRun, where both SAC and TD3 fail. Also, BEE-TD3 boosts TD3's performance by a large margin.
+			</p>
+		</div>
+		<div class="figure-caption">
+			<div class="figure" style="height: 500px; background-image: url(Figures/res_dmcontrol.png);"></div>
+		</div>
+		
+		<h3>BAC in Meta-World Benchmark Tasks</h3>
+		<div class="figure-caption">
+			<p>
+				We also benchmark BAC on 14 goal-conditioned manipulation tasks from Meta-World. BAC consistently outperforms SAC and TD3 across all tasks.
+			</p>
+		</div>
+		<div class="figure-caption">
+			<div class="figure" style="height: 500px; background-image: url(Figures/res_metaworld.png);"></div>
+		</div>
+		
+		<h3>BAC in Adroit Benchmark Tasks</h3>
+		<div class="figure-caption">
+			<p>
+				BAC consistently outperforms on 3 dexterous hand manipulation tasks from Adroit.
+			</p>
+		</div>
+		<div class="figure-caption">
+			<div class="figure" style="height: 350px; background-image: url(Figures/res_adroit.png);"></div>
+		</div>
+		
+		<h3>BAC in MyoSuite Benchmark Tasks</h3>
+		<div class="figure-caption">
+			<p>
+				Notably, BAC shines on 5 challenging tasks in controlling muscles and bones from MyoSuite.
+			</p>
+		</div>
+		<div class="figure-caption">
+			<div class="figure" style="height: 200px; background-image: url(Figures/res_myosuite.png);"></div>
+		</div>
+		
+		<h3>BAC in ManiSkill2 Benchmark Tasks</h3>
+		<div class="figure-caption">
+			<p>
+				BAC shows superiority on 5  manipulation tasks from ManiSkill2.
+			</p>
+		</div>
+		<div class="figure-caption">
+			<div class="figure" style="height: 200px; background-image: url(Figures/res_maniskill2.png);"></div>
+		</div>
+		
+		<h3>BAC in Shadow Dexterous Hand Benchmark Tasks</h3>
+		<div class="figure-caption">
+			<p>
+				BAC consistently outperforms on 3 dexterous hand manipulation tasks from Shadow Dexterous Hand Suite.
+			</p>
+		</div>
+		<div class="figure-caption">
+			<div class="figure" style="height: 200px; background-image: url(Figures/res_shadow_dexterous_hand.png);"></div>
+		</div>
+
+</div>
+<footer>
+<a href="#top" class="bold">To top &UpArrow;</a>
+</footer>
