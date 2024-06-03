@@ -1,0 +1,6 @@
+@article{luo2024offline,
+  title={Offline-Boosted Actor-Critic: Adaptively Blending Optimal Historical Behaviors in Deep Off-Policy RL},
+  author={Luo, Yu and Ji, Tianying and Sun, Fuchun and Zhang, Jianwei and Xu, Huazhe and Zhan, Xianyuan},
+  journal={arXiv preprint arXiv:2405.18520},
+  year={2024}
+}
