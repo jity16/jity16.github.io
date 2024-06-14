@@ -1,0 +1,139 @@
+<head>
+	<title>RoboGolf</title>
+	<meta property="og:title" content="RoboGolf">
+	<meta property="og:description" content="RoboGolf:Mastering Real-World Minigolf with a Reflective Multi-Modality Vision-Language Model">
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script type="text/javascript">
+		function toggle(id) {
+			var e = document.getElementById(id);
+			if(e.style.display == 'block')
+				e.style.display = 'none';
+			else
+				e.style.display = 'block';
+		}
+	</script>
+</head>
+<div class="header" id="top">
+	<h1><span class="bold"><span class="bold red">RoboGolf</span>:</span>  <br/> Mastering Real-World Minigolf <br/>with a Reflective Multi-Modality Vision-Language Model</h1>
+	<table class="authors">
+		<tbody>
+			<tr>
+				<td>
+					<h4>
+						<a href="https://tams.informatik.uni-hamburg.de/people/zhou/" class="nobreak">Hantao Zhou</a> <sup>1</sup>&ast;,&ensp;
+						<a href="https://jity16.github.io/" class="nobreak">Tianying Ji</a> <sup>2</sup>&ast;,&ensp;
+						<a href="https://tams.informatik.uni-hamburg.de/people/zhang/" class="nobreak">Jianwei Zhang</a> <sup>1</sup>,&ensp;
+						<a href="https://scholar.google.com/citations?user=DbviELoAAAAJ&hl=en" class="nobreak">Fuchun Sun</a> <sup>2</sup>,&ensp;
+						<a href="http://hxu.rocks/" class="nobreak">Huazhe Xu</a> <sup>2</sup><br/>&ensp;
+						<span class="authors-affiliation" style="font-size: 0.95em"><sup>1</sup> University of Hamburg, <sup>2</sup> Tsinghua University</span>
+						&ast; Equal contribution <br/>&ensp;
+					</h4>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<div class="content">
+	<div class="hr"></div>
+	    <div class="content-video" style="margin-bottom: 32px">
+			<div class="content-video-container">
+				<div class="content-video" style="padding: 1.1%">
+					<video playsinline="" autoplay="" loop="" preload="" muted="" width="110%">
+						<source src="video/OuterClosedLoop.mp4" type="video/mp4"/>
+					</video>
+				</div>
+			</div>
+		</div>
+	<div class="hr"></div>
+	<div>
+		<h2>Abstract</h2>
+		<p class="abstract">
+            Minigolf is an exemplary real-world game for examining embodied intelligence, as it not only challenges spatial and kinodynamic reasoning but also requires reflective and modification capacities to address impractical course designs. 
+			We introduce <span class="bold red">RoboGolf</span>, a framework that combines dual-camera perception and closed-loop control, augmented by a reflective equilibrium loop.  The core of both loops is powered by finetuned VLMs.  Extensive experiments on challenging given courts and impractical courts demonstrate the effectiveness of our approach.
+
+		</p>
+	</div>
+	<div class="hr"></div>
+	<div>
+		<h2>RoboGolf Handles Diverse Courts</h2>
+		<h3>Simple Courts</h3>
+		<div class="content-video" style="margin-bottom: 32px">
+			<div class="content-video-container">
+				<img src="video/simple/simple_50.gif" width="18%">
+				<img src="video/simple/simple_19.gif" width="18%">
+				<img src="video/simple/simple_29.gif" width="18%">
+				<img src="video/simple/simple_60.gif" width="18%">
+				<br/>
+				<img src="video/simple/simple_74.gif" width="18%">
+				<img src="video/simple/simple_96.gif" width="18%">
+				<img src="video/simple/simple_101.gif" width="18%">
+				<img src="video/simple/simple_109.gif" width="18%">
+			</div>
+		</div>
+		<h3>Medium Courts</h3>
+		<div class="content-video" style="margin-bottom: 32px">
+		    <div class="content-video-container" style="display: flex; flex-wrap: wrap; gap: 16px;">
+		        <div style="flex: 1 1 48%; text-align: center;">
+		            <p style="text-align: center; font-weight: bold;">Variations of Endpoint Positions</p>
+            		<p style="text-align: center; color: gray;">Require precise hitting force to go through the ramp yet not exceed the volcano.</p>
+		            <img src="video/medium/medium_28.gif" width="40%">
+		            <img src="video/medium/medium_36.gif" width="40%">
+		        </div>
+		        <div style="flex: 1 1 48%; text-align: center;">
+		        	<p style="text-align: center; font-weight: bold;">Variations of Endpoint Types</p>
+		            <p style="text-align: center; color: gray;">Different endpoints and obstacles require our model to recognize and plan accurately to avoid overshooting or falling short.</p>
+		            <img src="video/medium/medium_78.gif" width="40%">
+		            <img src="video/medium/medium_74.gif" width="40%">
+		        </div>
+		        <div style="flex: 1 1 48%; text-align: center;">
+		            <p style="text-align: center; font-weight: bold;">Courts with Multiple Feasible Solutions</p>
+		            <p style="text-align: center; color: gray;">Identify various feasible solutions, and accurately plan the shot to navigate through obstacles and reach the target efficiently.</p>
+
+		            <img src="video/medium/medium_51.gif" width="40%">
+		            <img src="video/medium/medium_47.gif" width="40%">
+		        </div>
+		        <div style="flex: 1 1 48%; text-align: center;">
+		            <p style="text-align: center; font-weight: bold;">Complex Kinodynamic</p>
+		            <p style="text-align: center; color: gray;">Hit with precise force and direction to avoid getting stuck, prevent wall hits, force loss. </p>
+		            <img src="video/medium/medium_25.gif" width="40%">
+		            <img src="video/medium/medium_43.gif" width="40%">
+		        </div>
+		    </div>
+		</div>
+		<h3>Hard Courts</h3>
+		<div class="content-video" style="margin-bottom: 32px">
+		    <div class="content-video-container" style="display: flex; flex-wrap: wrap; gap: 16px;">
+		        <img src="video/hard/hard_2.gif" width="18%">
+		        <img src="video/hard/hard_64.gif" width="18%">
+		       	<img src="video/hard/hard_65.gif" width="18%">
+		        <img src="video/hard/hard_19.gif" width="18%">
+		        <img src="video/hard/hard_23.gif" width="18%">
+		        <br/>
+		        <img src="video/hard/hard_35.gif" width="18%">
+		        <img src="video/hard/hard_46.gif" width="18%">
+		        <img src="video/hard/hard_9.gif" width="18%">
+		        <img src="video/hard/hard_56.gif" width="18%">
+		        <img src="video/hard/hard_61.gif" width="18%">
+		        <br/>
+		        <img src="video/hard/hard_62.gif" width="18%">
+		         <img src="video/hard/hard_10.gif" width="18%">
+		        <img src="video/hard/hard_65_2.gif" width="18%">
+		         <img src="video/hard/hard_14.gif" width="18%">
+		        <img src="video/hard/hard_95.gif" width="18%">
+    		</div>
+		</div>
+		<h3>Bilateral Golf Balls Impact Challenge</h3>
+		<div class="content-video" style="margin-bottom: 32px">
+			<p style="text-align: center; color: gray;"> Hit the red ball from the starting point to bump the white ball, initially positioned at the center of the court, into the yellow round endpoint. </p>
+		    <div class="content-video-container" style="display: flex; flex-wrap: wrap; gap: 16px;">
+		        <img src="video/twoball_34.gif" width="18%">
+		        <img src="images/twoballshitting.jpg" width="80%">
+    		</div>
+		</div>
+
+	</div>
+	
+</div>
+
