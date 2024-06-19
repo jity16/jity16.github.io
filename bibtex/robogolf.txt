@@ -1,0 +1,6 @@
+@article{zhou2024robogolf,
+  title={RoboGolf: Mastering Real-World Minigolf with a Reflective Multi-Modality Vision-Language Model},
+  author={Zhou, Hantao and Ji, Tianying and Zhang, Jianwei and Sun, Fuchun and Xu, Huazhe},
+  journal={arXiv preprint arXiv:2406.10157},
+  year={2024}
+}
